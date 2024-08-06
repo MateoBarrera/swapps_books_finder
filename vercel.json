@@ -1,4 +1,10 @@
 {
+	"builds": [
+		{
+			"src": "bookfinder/wsgi.py",
+			"use": "@vercel/python"
+		}
+	],
 	"routes": [
 		{
 			"src": "/(.*)",
