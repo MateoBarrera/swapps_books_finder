@@ -1,129 +1,241 @@
 /* General styles */
+:root {
+	--primary-color: #2196f3;
+	--secondary-color: #f5f5f5;
+	--text-color: #333;
+	--background-color: #fff;
+}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
+	font-family: "Roboto", sans-serif;
+	margin: 0;
+	padding: 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
 }
 
 /* headers */
 
 .header {
-  background-color: #2196f3;
-  color: #fff;
-  padding: 20px;
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: 20px;
 }
 
 .header h1 {
-  margin: 0;
-  font-size: 24px;
+	margin: 0;
+	font-size: 24px;
 }
 
 /* Nav */
 
 .navbar {
-  display: flex;
-  min-width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  color: #fff;
+	display: flex;
+	min-width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--background-color);
+	padding: 10px 20px;
+	color: var(--text-color);
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .navbar-logo {
-  height: 40px;
-  margin-right: 10px;
+	height: 40px;
+	margin-right: 10px;
 }
 
 .navbar-title {
-  font-size: 24px;
-  font-weight: bold;
+	font-size: 48px;
+	font-weight: bold;
 }
 
 .navbar-menu {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
 }
 
 .navbar-item {
-  margin-left: 20px;
+	margin-left: 20px;
 }
 
 .navbar-item a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 18px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 18px;
 }
 
 .navbar-item a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
-
 
 /* Main */
 .main-content {
-  padding: 20px;
+	padding: 20px;
 }
 
 /* Footer */
 .footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
 }
 
 .footer p {
-  margin: 0;
+	margin: 0;
 }
 
 .bg-primary {
-  background-color: #2196f3;
-  color: #fff;
+	background-color: var(--primary-color);
+	color: #fff;
 }
 
 .bg-secondary {
-  background-color: #f5f5f5;
-  color: #333;
+	background-color: var(--secondary-color);
+	color: var(--text-color);
 }
 
 .bg-white {
-  background-color: #fff;
-  color: #333;
+	background-color: var(--background-color);
+	color: var(--text-color);
 }
 
-.title{
-  font-size: 24px;
-  font-weight: bold;
+.title {
+	font-size: 24px;
+	font-weight: bold;
 }
 
-.normal{
-  font-size: 18px;
+.normal {
+	font-size: 18px;
 }
 
-.small{
-  font-size: 14px;
+.small {
+	font-size: 14px;
 }
 
-.text-primary{
-  color: #2196f3;
+.text-primary {
+	color: var(--primary-color);
 }
 
+.text-secondary {
+	color: var(--secondary-color);
+}
 
-.text-secondary{
-  color: #f5f5f5;
+#suggestions {
+	border: 1px solid #ccc;
+	max-height: 150px;
+	overflow-y: auto;
+	position: absolute;
+	background: white;
+	z-index: 1000;
+	width: calc(100% - 22px);
+}
+
+.suggestion {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.suggestion:hover {
+	background-color: #f0f0f0;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 20px;
+}
+
+.results-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.book {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	width: 300px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
+.book img {
+	max-width: 100%;
+	aspect-ratio: 2/3;
+	border-bottom: 1px solid #ddd;
+}
+
+.book .content {
+	padding: 16px;
+}
+
+.book h3 {
+	font-size: 1.5em;
+	margin: 0 0 10px;
+}
+
+.book p {
+	margin: 0 0 10px;
+	color: #555;
+}
+
+.book .author {
+	font-size: 1em;
+	color: #888;
+}
+
+.book .rating {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin-bottom: 10px;
+}
+
+.book .rating-value {
+	font-size: 1em;
+	color: #555;
+	margin-right: 5px;
+}
+
+.book .rating svg {
+	width: 18px;
+	height: 18px;
+	fill: #f39c12;
+}
+
+.book .year {
+	color: #888;
+	margin-bottom: 10px;
+}
+
+.book .description {
+	margin-bottom: 10px;
+}
+
+.book .view-link {
+	color: #3498db;
+	text-decoration: none;
+	font-weight: bold;
+	margin-top: auto;
+	padding: 16px;
+	text-align: center;
+	border-top: 1px solid #ddd;
 }
