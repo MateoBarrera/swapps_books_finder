@@ -7,7 +7,5 @@ from books_search import views as books_search_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',  books_search_views.index, name='index'),
-    path('home/', books_search_views.home, name='home'),
-    path('index/', books_search_views.index2, name='index_2'),
+    path('',  books_search_views.home, name='home'),
 ]

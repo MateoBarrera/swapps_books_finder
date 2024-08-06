@@ -20,6 +20,7 @@ document.getElementById("search-input").addEventListener("input", function () {
 // Adds an event listener to form submitted.
 document.getElementById("search-form").addEventListener("submit", function (event) {
 	event.preventDefault()
+	animation()
 
 	// Gets the query from the user input.
 	const query = document.getElementById("search-input").value.replaceAll(" ", "+")
@@ -70,6 +71,7 @@ function displaySuggestions(suggestions) {
 		div.className = "suggestion"
 		div.textContent = suggestion.title
 		div.addEventListener("click", () => {
+			animation()
 			document.getElementById("search-input").value = suggestion.title
 			clearSuggestions()
 			searchBooks(suggestion.title, "title")
@@ -150,4 +152,9 @@ function displayResults(books) {
 		const bookElement = createBookElement(book)
 		resultsContainer.appendChild(bookElement)
 	})
+}
+
+function animation() {
+	const searchForm = document.getElementById("search-form")
+	searchForm.classList.add("submitted")
 }

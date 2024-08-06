@@ -1,19 +1,28 @@
 {% extends 'base.html' %} {% block content %}{% load static %}
 
-<h1>Find Your Book</h1>
-
-<form id="search-form">
-	<input type="text" id="search-input" placeholder="Search for books..." autocomplete="off" />
-	<select id="search-type">
-		<option value="q">All</option>
-		<option value="title">Title</option>
-		<option value="author">Author</option>
-		<option value="subject">Subject</option>
-	</select>
-	<div id="suggestions"></div>
-	<button type="submit">Search</button>
+<form id="search-form" class="navbar">
+	<div class="navbar-brand">
+		<img src="{% static 'img/Logo.webp' %}" alt="Logo" class="navbar-logo" />
+		<div class="col">
+			<span class="navbar-title">Books Finder</span>
+			<p class="slogan">Find the books you're looking for.</p>
+		</div>
+	</div>
+	<div class="navbar-inputs">
+		<input type="text" id="search-input" placeholder="Search for books..." autocomplete="off" />
+		<select id="search-type">
+			<option value="q">All</option>
+			<option value="title">Title</option>
+			<option value="author">Author</option>
+			<option value="subject">Subject</option>
+		</select>
+		<div id="suggestions"></div>
+		<button type="submit">Search</button>
+	</div>
 </form>
-<ul id="results" class="results-container"></ul>
+<div class="container">
+	<ul id="results" class="results-container"></ul>
+</div>
 
 <script src="{% static 'js/search.js' %}"></script>
 {% endblock %}
