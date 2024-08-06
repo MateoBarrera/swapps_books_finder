@@ -73,7 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bookfinder.wsgi.application'
+WSGI_APPLICATION = 'bookfinder.wsgi.app'
 
 
 # Database
