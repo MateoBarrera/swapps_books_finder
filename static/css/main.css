@@ -42,6 +42,7 @@ body {
 	padding: 20px;
 	top: 0%;
 	left: 50%;
+	transition: 0.5s ease-in-out, opacity 1.5s ease-in-out;
 	transform: translate(-50%, 100%);
 }
 
@@ -103,6 +104,7 @@ body {
 
 .navbar-inputs button {
 	background-color: var(--primary-color);
+	opacity: 0.8;
 	color: var(--background-color);
 	border: none;
 	cursor: pointer;
@@ -110,7 +112,7 @@ body {
 }
 
 .navbar-inputs button:hover {
-	background-color: var(--secondary-color);
+	opacity: 1;
 }
 
 /* Suggestions */
@@ -255,7 +257,7 @@ body {
 /* Animation styles */
 @keyframes slideUp {
 	from {
-		transform: translate(-50%, 10%);
+		transform: translate(-50%, 100%);
 	}
 	to {
 		transform: translate(-50%, 10%);
@@ -263,5 +265,151 @@ body {
 }
 
 #search-form.submitted {
-	animation: slideUp 0.5s forwards;
+	animation: slideUp ease-in 0.8s forwards;
+}
+
+.slide-top {
+	animation: slide-top 0.4s linear both;
+}
+@keyframes slide-top {
+	0% {
+		transform: translate(-50%, 100%);
+	}
+	100% {
+		transform: translate(-50%, 10%);
+	}
+}
+
+.bounce-bottom {
+	animation: bounce-bottom 1.4s linear both;
+}
+@keyframes bounce-bottom {
+	0% {
+		transform: translate(-50%, 100%);
+		animation-timing-function: ease-in;
+		opacity: 1;
+	}
+	24% {
+		opacity: 1;
+	}
+	40% {
+		transform: translate(-50%, 40%);
+		animation-timing-function: ease-in;
+	}
+	65% {
+		transform: translate(-50%, 25%);
+		animation-timing-function: ease-in;
+	}
+	82% {
+		transform: translate(-50%, 20%);
+		animation-timing-function: ease-in;
+	}
+	93% {
+		transform: translate(-50%, 17%);
+		animation-timing-function: ease-in;
+	}
+	25%,
+	55%,
+	75%,
+	87% {
+		transform: translate(-50%, 10%);
+		animation-timing-function: ease-out;
+	}
+	100% {
+		transform: translate(-50%, 10%);
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+}
+
+/* Loader */
+#loader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
+
+.spinner {
+	border: 8px solid rgba(0, 0, 0, 0.5);
+	border-top: 8px solid var(--primary-color);
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	animation: spin 1.5s linear infinite;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Badges styles */
+.badge {
+	display: inline-block;
+	padding: 0.5em 1em;
+	margin: 0.25em;
+	font-size: 0.85em;
+	font-weight: 600;
+	color: #fff;
+	background-color: var(--primary-color);
+	border-radius: 0.5em;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.badges {
+	margin-top: 10px;
+}
+
+/* Button styles */
+.redirect-button {
+	display: flow;
+	padding: 0.75em 1.5em;
+	margin: 1em 0;
+	font-size: 1em;
+	font-weight: 600;
+	color: var(--text-color);
+	background-color: white;
+	border: 1px solid var(--primary-color);
+	border-radius: 0.5em;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.redirect-button:hover {
+	background-color: var(--primary-color);
+	border: 1px solid var(--tertiary-color);
+	border-radius: 0.5em;
+	color: white;
+	transform: translateY(-2px);
+}
+
+#book-info {
+	display: block;
+	height: 100%;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#book-info h3 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}
+
+#book-info .author {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
 }

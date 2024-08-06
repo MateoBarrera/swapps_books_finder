@@ -2,6 +2,20 @@
  * Adds event listeners to the search input and form elements.
  */
 
+// Loader functions
+function showLoader() {
+	const loader = document.createElement("div")
+	loader.id = "loader"
+	loader.innerHTML = `<div class="spinner"></div>`
+	document.body.appendChild(loader)
+}
+function hideLoader() {
+	const loader = document.getElementById("loader")
+	if (loader) {
+		loader.remove()
+	}
+}
+
 // Adds an event listener to the search input.
 document.getElementById("search-input").addEventListener("input", function () {
 	// Extract & Formatting input user to API query.
@@ -92,10 +106,17 @@ function clearSuggestions() {
  * @returns {Promise<void>} - A promise that resolves when the search results are displayed.
  */
 async function searchBooks(query, type) {
-	const response = await fetch(`https://openlibrary.org/search.json?${type}=${query}`)
-	const data = await response.json()
-	const results = data.docs
-	displayResults(results)
+	showLoader()
+	try {
+		const response = await fetch(`https://openlibrary.org/search.json?${type}=${query}`)
+		const data = await response.json()
+		const results = data.docs
+		displayResults(results)
+	} catch (error) {
+		console.error("Error fetching data:", error)
+	} finally {
+		hideLoader() // Ocultar el loader después de la solicitud
+	}
 }
 
 /**
@@ -118,9 +139,13 @@ function createBookElement(book) {
 	const urlOpenLibrary = `https://openlibrary.org${book.key}/${encodeURIComponent(
 		book.title
 	)}?edition=key%3A/books/${book.edition_key[0]}`
+
+	const subjects = book.subject ? book.subject.slice(0, 2) : ["No subjects available"]
+	const badges = subjects.map((subject) => `<span class="badge">${subject}</span>`).join(" ")
+
 	div.innerHTML = `
         ${img}
-        <div class="content">
+        <div id="book-info" class="content">
             <h3>${book.title}</h3>
             <p class="author">by ${
 							book.author_name ? book.author_name.join(", ") : "Unknown Author"
@@ -132,8 +157,8 @@ function createBookElement(book) {
 						</div>
             
             <p class="year">${book.first_publish_year || "Unknown Year"}</p>
-            <p class="description">${book.description || "No description available."}</p>
-            <a class="view-link" href="${urlOpenLibrary}">Go to Open Library</a>
+            <p class="badges">${badges}</p>
+            <a class="redirect-button" href="${urlOpenLibrary}">Go to Open Library</a>
         </div>
     `
 	return div
@@ -147,6 +172,7 @@ function createBookElement(book) {
  */
 function displayResults(books) {
 	const resultsContainer = document.getElementById("results")
+	clearSuggestions()
 	resultsContainer.innerHTML = ""
 	books.forEach((book) => {
 		const bookElement = createBookElement(book)

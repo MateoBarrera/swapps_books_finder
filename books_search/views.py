@@ -10,4 +10,4 @@ def home(request):
     Returns:
         HttpResponse: The rendered response containing the home page.
     """
-    return render(request, 'books_search/index_2.html')
+    return render(request, 'books_search/index.html')
